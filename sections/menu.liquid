@@ -1,0 +1,86 @@
+
+<div class="topnav">
+{% for link in linklists[section.settings.list_menu].links %}
+    <a href="{{ link.url }}">{{ link.title }}</a>
+{% endfor %}
+</div>
+
+<img src="{{ section.settings.image | img_url: '350x350' }}">
+    
+
+
+<style>
+
+.topnav {
+  overflow: hidden;
+  background-color:{{ section.settings.color }};
+}
+
+
+.topnav a {
+  float: left;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  color: {{ section.settings.textcolor }};
+}
+
+.topnav a:hover {
+  color: black;
+  background-color:{{ section.settings.hovercolor }};
+}
+
+
+</style>
+
+{% schema %}
+{
+  "name": "Menu",
+  "settings": [
+    {
+      "id":"color",
+      "type":"color",
+      "label":"color",
+      "default": "#000"
+
+    },
+    {
+      "id":"hovercolor",
+      "type":"color",
+      "label":"hover",
+      "default": "#ffffff"
+    },
+    {
+      "id":"textcolor",
+      "type":"color",
+      "label":"text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "logo"
+    },
+    {
+        "type": "link_list",
+        "id": "list_menu",
+        "label": "Menu Test",
+        "default": "main-menu"
+    }
+  ]
+  ,
+  "presets": [
+    {
+      "name": "Menu",
+      "category": "Menu"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
